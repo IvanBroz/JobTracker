@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class HelloWorld {
+public class ApplicationController {
 
     @GetMapping(path = "/")
-    public ModelAndView showHelloWorldPage(){
-        return new ModelAndView("helloworld");
+    public ModelAndView showApplicationsPage() {
+        return new ModelAndView("applications");
     }
 }
