@@ -6,5 +6,3 @@ RUN gradle build --no-daemon
 FROM eclipse-temurin:21-jdk-jammy
 COPY --from=build /home/gradle/src/build/libs/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
-
-ls -la
