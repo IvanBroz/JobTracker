@@ -1,10 +1,8 @@
 package de.htw.ivan.job_tracker_backend.Controller;
 
 import de.htw.ivan.job_tracker_backend.Entity.Application;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import de.htw.ivan.job_tracker_backend.Service.ApplicationService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,15 +10,19 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class ApplicationController {
 
-    @GetMapping(path = "/applications")
-    public ResponseEntity<List<Application>> getApplications() {
+    private final ApplicationService applicationService;
 
-        List<Application> applications = List.of(
-                new Application(1L, "Siemens", "Junior Developer", "Bewerbung gesendet"),
-                new Application(2L, "BMW", "Backend Developer", "Interview"),
-                new Application(3L, "SAP", "Software Engineer", "Absage")
-        );
+    public ApplicationController(ApplicationService applicationService) {
+        this.applicationService = applicationService;
+    }
 
-        return ResponseEntity.ok(applications);
+    @GetMapping("/applications")
+    public List<Application> getApplications() {
+        return applicationService.getAllApplications();
+    }
+
+    @PostMapping("/applications")
+    public Application createApplication(@RequestBody Application application) {
+        return applicationService.saveApplication(application);
     }
 }
