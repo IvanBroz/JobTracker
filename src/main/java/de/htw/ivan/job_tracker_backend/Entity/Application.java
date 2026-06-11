@@ -15,15 +15,20 @@ public class Application {
     private String company;
     private String position;
     private String status;
+    private String jobLink;
+    private String applicationDate;
 
     public Application() {
     }
 
-    public Application(Long id, String company, String position, String status) {
+    public Application(Long id, String company, String position,
+                       String status, String jobLink, String applicationDate) {
         this.id = id;
         this.company = company;
         this.position = position;
         this.status = status;
+        this.jobLink = jobLink;
+        this.applicationDate = applicationDate;
     }
 
     public Long getId() {
@@ -42,6 +47,14 @@ public class Application {
         return status;
     }
 
+    public String getJobLink() {
+        return jobLink;
+    }
+
+    public String getApplicationDate() {
+        return applicationDate;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -56,5 +69,13 @@ public class Application {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void setJobLink(String jobLink) {
+        this.jobLink = jobLink;
+    }
+
+    public void setApplicationDate(String applicationDate) {
+        this.applicationDate = applicationDate;
     }
 }
