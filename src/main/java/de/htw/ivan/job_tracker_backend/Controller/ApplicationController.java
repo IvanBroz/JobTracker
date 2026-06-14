@@ -25,4 +25,9 @@ public class ApplicationController {
     public Application createApplication(@RequestBody Application application) {
         return applicationService.saveApplication(application);
     }
+
+    @DeleteMapping("/applications/{id}")
+    public void deleteApplication(@PathVariable Long id) {
+        applicationService.deleteApplication(id);
+    }
 }
